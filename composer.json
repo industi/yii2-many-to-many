@@ -1,5 +1,5 @@
 {
-    "name": "arogachev/yii2-many-to-many",
+    "name": "industi/yii2-many-to-many",
     "description": "Many-to-many ActiveRecord relation for Yii 2 framework",
     "keywords": [
         "yii2",
