@@ -60,7 +60,6 @@ class ManyToManyRelation extends BaseObject
      */
     protected $_filled = false;
 
-
     /**
      * @inheritdoc
      */
@@ -149,11 +148,14 @@ class ManyToManyRelation extends BaseObject
         if (!$primaryKeys) {
             return;
         }
-
-        Yii::$app->db->createCommand()->delete($this->table, [
-            $this->ownAttribute => $this->_model->primaryKey,
-            $this->relatedAttribute => $primaryKeys,
-        ])->execute();
+        try {
+            Yii::$app->db->createCommand()->delete($this->table, [
+                $this->ownAttribute => $this->_model->primaryKey,
+                $this->relatedAttribute => $primaryKeys,
+            ])->execute();
+        } catch (\Exception $e) {
+            return ;
+        }
     }
 
     public function autoFill()
